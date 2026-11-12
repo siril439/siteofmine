@@ -12,44 +12,50 @@
 :root:has(#t2:checked){--bg:#1a1230;--card:#2a1f4acc;--main:#b9a3f5;--deep:#e6dcff;--text:#efe9ff;--glow:#8466e0}
 :root:has(#t3:checked){--bg:#fff0f8;--card:#ffffffcc;--main:#d27fc0;--deep:#8a2f78;--text:#40163a;--glow:#f0b3e0}
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:'Poppins',sans-serif;color:var(--text);background:var(--bg);line-height:1.7;overflow-x:hidden;
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{font-family:'Poppins',sans-serif;color:var(--text);background:var(--bg);line-height:1.7;overflow-x:hidden;transition:background .5s,color .5s;
 background-image:radial-gradient(circle at 20% 10%,var(--glow) 0,transparent 35%),radial-gradient(circle at 85% 70%,var(--main) 0,transparent 30%);background-attachment:fixed}
 .radio{display:none}
 
 
-#boot{position:fixed;inset:0;z-index:99;background:#f3edff;display:flex;flex-direction:column;align-items:center;justify-content:center;animation:gone .4s 1.6s forwards}
-#boot h2{margin:0;font-size:1.6rem;font-weight:600;letter-spacing:.5em;color:#5b3fa8;animation:fade .8s both}
-#boot h2::after{display:none}
-.bar{width:160px;height:3px;border-radius:9px;background:#d9ccf7;margin-top:22px;overflow:hidden}
-.bar i{display:block;height:100%;width:0;background:#9b7fe6;animation:load 1.5s ease-out forwards}
-@keyframes fade{from{opacity:0;letter-spacing:.9em}}
-@keyframes load{to{width:100%}}
-@keyframes gone{to{opacity:0;visibility:hidden}}
-
-nav{position:sticky;top:0;z-index:50;display:flex;gap:18px;justify-content:center;flex-wrap:wrap;padding:14px;background:var(--card);backdrop-filter:blur(14px);border-bottom:1px solid var(--main)}
+nav{position:sticky;top:0;z-index:50;display:flex;gap:18px;justify-content:center;align-items:center;flex-wrap:wrap;padding:14px;background:var(--card);backdrop-filter:blur(14px);border-bottom:1px solid var(--main)}
 nav a{color:var(--deep);text-decoration:none;font-weight:600;transition:.3s}
 nav a:hover{color:var(--main);text-shadow:0 0 12px var(--glow)}
-.themes label{cursor:pointer;display:inline-block;width:20px;height:20px;border-radius:50%;border:2px solid var(--deep);vertical-align:middle}
+.themes label{cursor:pointer;display:inline-block;width:20px;height:20px;border-radius:50%;border:2px solid var(--deep);vertical-align:middle;transition:.3s}
+.themes label:hover{transform:scale(1.25)}
 .themes label:nth-child(1){background:#9b7fe6}.themes label:nth-child(2){background:#1a1230}.themes label:nth-child(3){background:#d27fc0}
 section,header,footer{max-width:1000px;margin:auto;padding:60px 20px}
 h2{font-size:2rem;color:var(--deep);margin-bottom:20px;text-align:center}
 h2::after{content:"";display:block;width:70px;height:4px;margin:8px auto;border-radius:4px;background:linear-gradient(90deg,var(--main),var(--glow))}
+h3{color:var(--deep);margin-bottom:8px}
 .glass{background:var(--card);border:1px solid var(--glow);border-radius:24px;padding:28px;box-shadow:0 20px 50px #5b3fa833;backdrop-filter:blur(12px);transition:.4s}
 .glass:hover{transform:translateY(-8px);box-shadow:0 30px 70px var(--glow)}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}
 
 
-.hero{display:grid;grid-template-columns:1fr 1.4fr;gap:40px;align-items:center;animation:rise .9s 1.7s both}
-.profile{text-align:center}
-.profile img{width:190px;height:190px;object-fit:cover;border-radius:50%;border:5px solid var(--main);animation:pulse 3s infinite,float 5s ease-in-out infinite}
-.profile h3{margin-top:14px;color:var(--deep)}
+.hero{display:grid;grid-template-columns:1fr 1.4fr;gap:40px;align-items:center;animation:rise .9s both}
+
+.profile{position:relative;justify-self:center;width:min(100%,340px);aspect-ratio:1/1;padding:0;border-radius:28px;overflow:hidden;
+border:4px solid var(--main);animation:cardfloat 5s ease-in-out infinite,pulse 3s infinite}
+.profile:hover{animation-play-state:paused;transform:none;box-shadow:0 0 45px var(--main)}
+.profile img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s}
+.profile:hover img{transform:scale(1.08)}
+.profile figcaption{position:absolute;left:0;right:0;bottom:0;padding:50px 16px 16px;text-align:center;color:#fff;
+background:linear-gradient(transparent,#1a1230e6)}
+.profile figcaption b{display:block;font-size:1.05rem}
+.profile figcaption span{font-size:.85rem;opacity:.9}
+.badge{display:inline-block;margin:6px 0 4px;padding:5px 16px;border-radius:30px;font-size:.85rem;font-weight:600;color:#fff;
+background:linear-gradient(135deg,var(--main),var(--deep));box-shadow:0 6px 18px var(--glow)}
 .hero h1{font-size:3rem;font-weight:800;line-height:1.1;background:linear-gradient(90deg,var(--deep),var(--main),var(--glow));-webkit-background-clip:text;background-clip:text;color:transparent}
 .tag{font-family:'Playfair Display',serif;font-style:italic;font-size:1.4rem;color:var(--main);margin:10px 0}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 6px}
+.chips span{padding:4px 14px;border-radius:30px;border:1px solid var(--main);color:var(--deep);font-size:.85rem;background:var(--card);transition:.3s}
+.chips span:hover{background:var(--main);color:#fff;transform:translateY(-3px)}
 .btn{display:inline-block;margin:8px 8px 0 0;padding:12px 26px;border:0;border-radius:40px;background:linear-gradient(135deg,var(--main),var(--deep));color:#fff;font:600 1rem 'Poppins';text-decoration:none;cursor:pointer;transition:.3s}
 .btn:hover{transform:scale(1.08);box-shadow:0 0 25px var(--main)}
+#cheer{margin-top:14px;min-height:1.7em;font-weight:600;color:var(--deep)}
 @keyframes rise{from{opacity:0;transform:translateY(50px)}}
-@keyframes float{50%{transform:translateY(-12px)}}
+@keyframes cardfloat{0%,100%{transform:translateY(0) rotate(-1.5deg)}50%{transform:translateY(-16px) rotate(1.5deg)}}
 @keyframes pulse{0%,100%{box-shadow:0 0 0 0 var(--main)}50%{box-shadow:0 0 0 22px transparent}}
 
 
@@ -58,11 +64,13 @@ th{background:var(--deep);color:var(--bg)}
 th,td{padding:12px;text-align:left}
 tr:nth-child(even){background:#9b7fe622}
 tr:hover td{background:var(--glow)}
+.table-wrap{overflow-x:auto}
 ul,ol{padding-left:22px}li{margin:6px 0}
 #map{width:100%;height:300px;border:0;border-radius:20px}
 .u{text-decoration:underline wavy var(--main)}
 footer{text-align:center}
 @media(max-width:700px){.hero{grid-template-columns:1fr}.hero h1{font-size:2.2rem}}
+@media(prefers-reduced-motion:reduce){*{animation-duration:.01s!important;animation-iteration-count:1!important}}
 </style>
 </head>
 <body>
@@ -71,8 +79,6 @@ footer{text-align:center}
 <input class="radio" type="radio" name="t" id="t2">
 <input class="radio" type="radio" name="t" id="t3">
 
-<div id="boot"><h2>SIRIL RAJ</h2><div class="bar"><i></i></div></div>
-
 <nav>
   <a href="#about">About</a><a href="#edu">Education</a><a href="#skills">Skills</a><a href="#map">Location</a><a href="#contact">Contact</a>
   <span class="themes"><label for="t1"></label> <label for="t2"></label> <label for="t3"></label></span>
@@ -80,19 +86,21 @@ footer{text-align:center}
 
 <header>
   <div class="hero">
-    <aside class="glass profile">
+    <figure class="glass profile">
       <img src="siril.png" alt="Chenigarapu Siril Raj">
-      <h3>Chenigarapu Siril Raj</h3>
-      <p><i>@Cheer_up_siril</i></p>
-    </aside>
+      <figcaption><b>Chenigarapu Siril Raj</b><span>@Cheer_up_siril</span></figcaption>
+    </figure>
     <div>
       <p><b>Hello, I am</b></p>
       <h1>Chenigarapu Siril Raj</h1>
+      <span class="badge">🎓 First-Year CSE Student</span>
       <p class="tag">Future Software Engineer</p>
-      <p>CSE student at <b>IIIT Raichur</b> who loves <span class="u">programming</span>, web development and <em>building chat bots</em>.</p>
+      <p>I'm a first-year CSE student at <b>IIIT Raichur</b> who loves <span class="u">programming</span>, web development and <em>building chat bots</em>.</p>
+      <div class="chips"><span>Programming</span><span>Web Development</span><span>Chat Bots</span><span>Writing</span></div>
       <a class="btn" href="#contact">Hire Me</a>
-      <a class="btn" href="https://www.iiitr.ac.in" target="_blank">My College</a>
-      <button class="btn">Cheer Up!</button>
+      <a class="btn" href="https://www.iiitr.ac.in" target="_blank" rel="noopener">My College</a>
+      <button class="btn" id="cheerBtn" type="button">Cheer Up!</button>
+      <p id="cheer" aria-live="polite"></p>
     </div>
   </div>
 </header>
@@ -104,6 +112,7 @@ footer{text-align:center}
     <div class="glass"><h3>Biodata</h3>
       <p><strong>Name:</strong> Chenigarapu Siril Raj</p>
       <p><strong>Username:</strong> Cheer_up_siril</p>
+      <p><strong>Studying:</strong> B.Tech CSE, 1st Year, IIIT Raichur</p>
       <p><strong>Address:</strong> Surendrapuri Colony, Hanumakonda</p>
       <p><strong>Ambition:</strong> Software Engineer</p>
       <p><strong>Code:</strong> D</p></div>
@@ -116,12 +125,12 @@ footer{text-align:center}
 
 <section id="edu">
   <h2>Education</h2>
-  <div class="glass">
+  <div class="glass table-wrap">
     <table>
       <tr><th>Level</th><th>Institution</th><th>Details</th><th>Year</th></tr>
       <tr><td>School</td><td>Shine High School</td><td>83%</td><td>2024</td></tr>
       <tr><td>Intermediate</td><td>Sri Chaitanya Junior College</td><td>MPC / Inter</td><td>2024-26</td></tr>
-      <tr><td>B.Tech</td><td>IIIT Raichur</td><td>CSE</td><td>2026</td></tr>
+      <tr><td>B.Tech</td><td>IIIT Raichur</td><td>CSE · First Year</td><td>2026</td></tr>
     </table>
   </div>
 </section>
@@ -151,7 +160,12 @@ footer{text-align:center}
     <p>Surendrapuri Colony, Hanumakonda</p>
     <a class="btn" href="mailto:Chenigarapusirilraj@gmail.com">Send Email</a>
   </div>
-  <p style="margin-top:24px">© 2026 Siril Raj · Made with HTML &amp; CSS</p>
+  <p style="margin-top:24px">© 2026 Siril Raj · First-Year CSE, IIIT Raichur · Made with HTML &amp; CSS</p>
 </footer>
+
+<script>
+var msgs=["You've got this! 💜","Keep coding, keep growing! 🚀","Dedication beats talent! ✨","One bug at a time! 🐛","Smile, today is yours! 😊"],i=0;
+document.getElementById('cheerBtn').onclick=function(){document.getElementById('cheer').textContent=msgs[i++%msgs.length]};
+</script>
 </body>
 </html>
