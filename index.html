@@ -7,7 +7,7 @@
 <link rel="icon" type="image/png" href="siril.png">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&family=Playfair+Display:ital,wght@1,600&family=Fira+Code&display=swap" rel="stylesheet">
 <style>
-/* ===== Themes (pure CSS, radio buttons) ===== */
+
 :root{--bg:#f3edff;--card:#ffffffcc;--main:#9b7fe6;--deep:#5b3fa8;--text:#2e2250;--glow:#b9a3f5}
 :root:has(#t2:checked){--bg:#1a1230;--card:#2a1f4acc;--main:#b9a3f5;--deep:#e6dcff;--text:#efe9ff;--glow:#8466e0}
 :root:has(#t3:checked){--bg:#fff0f8;--card:#ffffffcc;--main:#d27fc0;--deep:#8a2f78;--text:#40163a;--glow:#f0b3e0}
@@ -17,7 +17,7 @@ body{font-family:'Poppins',sans-serif;color:var(--text);background:var(--bg);lin
 background-image:radial-gradient(circle at 20% 10%,var(--glow) 0,transparent 35%),radial-gradient(circle at 85% 70%,var(--main) 0,transparent 30%);background-attachment:fixed}
 .radio{display:none}
 
-/* ===== Boot screen (fast, minimal) ===== */
+
 #boot{position:fixed;inset:0;z-index:99;background:#f3edff;display:flex;flex-direction:column;align-items:center;justify-content:center;animation:gone .4s 1.6s forwards}
 #boot h2{margin:0;font-size:1.6rem;font-weight:600;letter-spacing:.5em;color:#5b3fa8;animation:fade .8s both}
 #boot h2::after{display:none}
@@ -27,7 +27,6 @@ background-image:radial-gradient(circle at 20% 10%,var(--glow) 0,transparent 35%
 @keyframes load{to{width:100%}}
 @keyframes gone{to{opacity:0;visibility:hidden}}
 
-/* ===== Layout ===== */
 nav{position:sticky;top:0;z-index:50;display:flex;gap:18px;justify-content:center;flex-wrap:wrap;padding:14px;background:var(--card);backdrop-filter:blur(14px);border-bottom:1px solid var(--main)}
 nav a{color:var(--deep);text-decoration:none;font-weight:600;transition:.3s}
 nav a:hover{color:var(--main);text-shadow:0 0 12px var(--glow)}
@@ -40,7 +39,7 @@ h2::after{content:"";display:block;width:70px;height:4px;margin:8px auto;border-
 .glass:hover{transform:translateY(-8px);box-shadow:0 30px 70px var(--glow)}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}
 
-/* ===== Hero / profile card ===== */
+
 .hero{display:grid;grid-template-columns:1fr 1.4fr;gap:40px;align-items:center;animation:rise .9s 1.7s both}
 .profile{text-align:center}
 .profile img{width:190px;height:190px;object-fit:cover;border-radius:50%;border:5px solid var(--main);animation:pulse 3s infinite,float 5s ease-in-out infinite}
@@ -53,7 +52,7 @@ h2::after{content:"";display:block;width:70px;height:4px;margin:8px auto;border-
 @keyframes float{50%{transform:translateY(-12px)}}
 @keyframes pulse{0%,100%{box-shadow:0 0 0 0 var(--main)}50%{box-shadow:0 0 0 22px transparent}}
 
-/* ===== Table, lists, iframe ===== */
+
 table{width:100%;border-collapse:collapse;overflow:hidden;border-radius:16px}
 th{background:var(--deep);color:var(--bg)}
 th,td{padding:12px;text-align:left}
@@ -67,7 +66,7 @@ footer{text-align:center}
 </style>
 </head>
 <body>
-<!-- Theme switchers -->
+
 <input class="radio" type="radio" name="t" id="t1" checked>
 <input class="radio" type="radio" name="t" id="t2">
 <input class="radio" type="radio" name="t" id="t3">
