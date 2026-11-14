@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Siril Raj | Portfolio</title>
 <link rel="icon" type="image/png" href="siril.png">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&family=Playfair+Display:ital,wght@1,600&family=Fira+Code&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
 <style>
 
 :root{--bg:#f3edff;--card:#ffffffcc;--main:#9b7fe6;--deep:#5b3fa8;--text:#2e2250;--glow:#b9a3f5}
@@ -18,7 +18,9 @@ background-image:radial-gradient(circle at 20% 10%,var(--glow) 0,transparent 35%
 .radio{display:none}
 
 
-nav{position:sticky;top:0;z-index:50;display:flex;gap:18px;justify-content:center;align-items:center;flex-wrap:wrap;padding:14px;background:var(--card);backdrop-filter:blur(14px);border-bottom:1px solid var(--main)}
+nav{position:sticky;top:0;z-index:50;display:flex;gap:18px;justify-content:space-between;align-items:center;flex-wrap:wrap;padding:14px 28px;background:var(--card);backdrop-filter:blur(14px);border-bottom:1px solid var(--main)}
+.brand{font-weight:800;font-size:1.1rem;color:var(--deep);text-decoration:none}
+.menu{display:flex;gap:18px;align-items:center;flex-wrap:wrap;margin-left:auto;justify-content:flex-end}
 nav a{color:var(--deep);text-decoration:none;font-weight:600;transition:.3s}
 nav a:hover{color:var(--main);text-shadow:0 0 12px var(--glow)}
 .themes label{cursor:pointer;display:inline-block;width:20px;height:20px;border-radius:50%;border:2px solid var(--deep);vertical-align:middle;transition:.3s}
@@ -35,15 +37,18 @@ h3{color:var(--deep);margin-bottom:8px}
 
 .hero{display:grid;grid-template-columns:1fr 1.4fr;gap:40px;align-items:center;animation:rise .9s both}
 
-.profile{position:relative;justify-self:center;width:min(100%,340px);aspect-ratio:1/1;padding:0;border-radius:28px;overflow:hidden;
-border:4px solid var(--main);animation:cardfloat 5s ease-in-out infinite,pulse 3s infinite}
-.profile:hover{animation-play-state:paused;transform:none;box-shadow:0 0 45px var(--main)}
-.profile img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s}
-.profile:hover img{transform:scale(1.08)}
-.profile figcaption{position:absolute;left:0;right:0;bottom:0;padding:50px 16px 16px;text-align:center;color:#fff;
-background:linear-gradient(transparent,#1a1230e6)}
+.profile{position:relative;justify-self:center;width:min(100%,340px);padding:0;margin:0;background:none;border:0;border-radius:0;box-shadow:none;backdrop-filter:none;overflow:visible;
+animation:cardfloat 5s ease-in-out infinite;filter:drop-shadow(0 14px 24px var(--glow))}
+.profile:hover{animation-play-state:paused;transform:none;box-shadow:none}
+
+.diamond{position:relative;aspect-ratio:1/1}
+.rh{position:absolute;inset:14.645%;border-radius:48px;transform:rotate(45deg);background:linear-gradient(135deg,var(--main),var(--deep));padding:5px}
+.rh-in{position:relative;width:100%;height:100%;border-radius:43px;overflow:hidden}
+.rh-in img{position:absolute;top:50%;left:50%;width:141.42%;height:141.42%;max-width:none;object-fit:cover;display:block;transform:translate(-50%,-50%) rotate(-45deg);transition:filter .4s}
+.profile:hover .rh-in img{filter:brightness(1.08)}
+.profile figcaption{margin-top:14px;text-align:center;color:var(--deep)}
 .profile figcaption b{display:block;font-size:1.05rem}
-.profile figcaption span{font-size:.85rem;opacity:.9}
+.profile figcaption span{font-size:.85rem;opacity:.85}
 .badge{display:inline-block;margin:6px 0 4px;padding:5px 16px;border-radius:30px;font-size:.85rem;font-weight:600;color:#fff;
 background:linear-gradient(135deg,var(--main),var(--deep));box-shadow:0 6px 18px var(--glow)}
 .hero h1{font-size:3rem;font-weight:800;line-height:1.1;background:linear-gradient(90deg,var(--deep),var(--main),var(--glow));-webkit-background-clip:text;background-clip:text;color:transparent}
@@ -51,11 +56,17 @@ background:linear-gradient(135deg,var(--main),var(--deep));box-shadow:0 6px 18px
 .chips{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 6px}
 .chips span{padding:4px 14px;border-radius:30px;border:1px solid var(--main);color:var(--deep);font-size:.85rem;background:var(--card);transition:.3s}
 .chips span:hover{background:var(--main);color:#fff;transform:translateY(-3px)}
-.btn{display:inline-block;margin:8px 8px 0 0;padding:12px 26px;border:0;border-radius:40px;background:linear-gradient(135deg,var(--main),var(--deep));color:#fff;font:600 1rem 'Poppins';text-decoration:none;cursor:pointer;transition:.3s}
+.btn{display:inline-block;margin:8px 8px 0 0;padding:12px 26px;border:0;border-radius:40px;background:linear-gradient(135deg,var(--main),var(--deep));color:var(--bg);font:600 1rem 'Poppins';text-decoration:none;cursor:pointer;transition:.3s}
 .btn:hover{transform:scale(1.08);box-shadow:0 0 25px var(--main)}
-#cheer{margin-top:14px;min-height:1.7em;font-weight:600;color:var(--deep)}
+
+
+.cheer-box{display:inline-block;vertical-align:top;margin-top:8px}
+.cheer-box summary{list-style:none;margin:0}
+.cheer-box summary::-webkit-details-marker{display:none}
+.cheer-box p{margin-top:12px;font-weight:600;color:var(--deep)}
+
 @keyframes rise{from{opacity:0;transform:translateY(50px)}}
-@keyframes cardfloat{0%,100%{transform:translateY(0) rotate(-1.5deg)}50%{transform:translateY(-16px) rotate(1.5deg)}}
+@keyframes cardfloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
 @keyframes pulse{0%,100%{box-shadow:0 0 0 0 var(--main)}50%{box-shadow:0 0 0 22px transparent}}
 
 
@@ -69,38 +80,49 @@ ul,ol{padding-left:22px}li{margin:6px 0}
 #map{width:100%;height:300px;border:0;border-radius:20px}
 .u{text-decoration:underline wavy var(--main)}
 footer{text-align:center}
+.details{list-style:none;padding:0;text-align:left;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:10px 30px}
+.details li{margin:0;padding:8px 0;border-bottom:1px dashed var(--main)}
+.details b{display:block;font-size:.8rem;text-transform:uppercase;letter-spacing:.06em;color:var(--main)}
+.details a{color:var(--deep);font-weight:600;text-decoration:none;word-break:break-all}
+.details a:hover{color:var(--main)}
 @media(max-width:700px){.hero{grid-template-columns:1fr}.hero h1{font-size:2.2rem}}
 @media(prefers-reduced-motion:reduce){*{animation-duration:.01s!important;animation-iteration-count:1!important}}
 </style>
 </head>
 <body>
 
-<input class="radio" type="radio" name="t" id="t1" checked>
+
+<input class="radio" type="radio" name="t" id="t1">
 <input class="radio" type="radio" name="t" id="t2">
-<input class="radio" type="radio" name="t" id="t3">
+<input class="radio" type="radio" name="t" id="t3" checked>
 
 <nav>
-  <a href="#about">About</a><a href="#edu">Education</a><a href="#skills">Skills</a><a href="#map">Location</a><a href="#contact">Contact</a>
-  <span class="themes"><label for="t1"></label> <label for="t2"></label> <label for="t3"></label></span>
+  <a class="brand" href="#top">Siril Raj</a>
+  <div class="menu">
+    <a href="#about">About</a><a href="#edu">Education</a><a href="#skills">Strengths</a><a href="#map">Where I Am</a><a href="#contact">Contact</a>
+    <span class="themes"><label for="t1"></label> <label for="t2"></label> <label for="t3"></label></span>
+  </div>
 </nav>
 
-<header>
+<header id="top">
   <div class="hero">
     <figure class="glass profile">
-      <img src="siril.png" alt="Chenigarapu Siril Raj">
+      <div class="diamond"><div class="rh"><div class="rh-in"><img src="siril.png" alt="Chenigarapu Siril Raj"></div></div></div>
       <figcaption><b>Chenigarapu Siril Raj</b><span>@Cheer_up_siril</span></figcaption>
     </figure>
     <div>
       <p><b>Hello, I am</b></p>
       <h1>Chenigarapu Siril Raj</h1>
-      <span class="badge">🎓 First-Year CSE Student</span>
-      <p class="tag">Future Software Engineer</p>
-      <p>I'm a first-year CSE student at <b>IIIT Raichur</b> who loves <span class="u">programming</span>, web development and <em>building chat bots</em>.</p>
-      <div class="chips"><span>Programming</span><span>Web Development</span><span>Chat Bots</span><span>Writing</span></div>
-      <a class="btn" href="#contact">Hire Me</a>
+      <span class="badge">🎓 First-Year Computer Science Student</span>
+      <p class="tag">Aspiring Software Engineer</p>
+      <p>I'm a first-year Computer Science student at <b>IIIT Raichur</b> who loves <span class="u">coding</span>, creating websites and <em>designing smart chat assistants</em>.</p>
+      <div class="chips"><span>Coding</span><span>Creating Websites</span><span>Chat Assistants</span><span>Writing</span></div>
+      <a class="btn" href="#contact">Let's Connect</a>
       <a class="btn" href="https://www.iiitr.ac.in" target="_blank" rel="noopener">My College</a>
-      <button class="btn" id="cheerBtn" type="button">Cheer Up!</button>
-      <p id="cheer" aria-live="polite"></p>
+      <details class="cheer-box">
+        <summary class="btn">Cheer Up!</summary>
+        <p>You've got this! 💜 Keep learning, keep growing! 🚀</p>
+      </details>
     </div>
   </div>
 </header>
@@ -109,17 +131,17 @@ footer{text-align:center}
 <section id="about">
   <h2>About Me</h2>
   <div class="grid">
-    <div class="glass"><h3>Biodata</h3>
+    <div class="glass"><h3>Personal Details</h3>
       <p><strong>Name:</strong> Chenigarapu Siril Raj</p>
-      <p><strong>Username:</strong> Cheer_up_siril</p>
-      <p><strong>Studying:</strong> B.Tech CSE, 1st Year, IIIT Raichur</p>
+      <p><strong>Nickname:</strong> Cheer_up_siril</p>
+      <p><strong>Currently Studying:</strong> B.Tech Computer Science, 1st Year, IIIT Raichur</p>
       <p><strong>Address:</strong> Surendrapuri Colony, Hanumakonda</p>
-      <p><strong>Ambition:</strong> Software Engineer</p>
-      <p><strong>Code:</strong> D</p></div>
+      <p><strong>Dream Career:</strong> Software Engineer</p>
+      <p><strong>Section:</strong> D</p></div>
     <div class="glass"><h3>Hobbies</h3>
       <ul><li>Reading books</li><li>Watching K-dramas</li><li>Listening to music</li></ul></div>
     <div class="glass"><h3>Inspiration</h3>
-      <p><em>Nick Vujicic</em> inspires me. My core value is <b><u>dedication</u></b>.</p></div>
+      <p><em>Nick Vujicic</em> inspires me. My guiding value is <b><u>dedication</u></b>.</p></div>
   </div>
 </section>
 
@@ -127,45 +149,48 @@ footer{text-align:center}
   <h2>Education</h2>
   <div class="glass table-wrap">
     <table>
-      <tr><th>Level</th><th>Institution</th><th>Details</th><th>Year</th></tr>
-      <tr><td>School</td><td>Shine High School</td><td>83%</td><td>2024</td></tr>
-      <tr><td>Intermediate</td><td>Sri Chaitanya Junior College</td><td>MPC / Inter</td><td>2024-26</td></tr>
-      <tr><td>B.Tech</td><td>IIIT Raichur</td><td>CSE · First Year</td><td>2026</td></tr>
+      <tr><th>Stage</th><th>Institution</th><th>Highlights</th><th>Year</th></tr>
+      <tr><td>Secondary School</td><td>Shine High School</td><td>Scored 83%</td><td>2024</td></tr>
+      <tr><td>Higher Secondary</td><td>Sri Chaitanya Junior College</td><td>Maths, Physics &amp; Chemistry</td><td>2024-26</td></tr>
+      <tr><td>B.Tech</td><td>IIIT Raichur</td><td>Computer Science · First Year</td><td>2026</td></tr>
     </table>
   </div>
 </section>
 
 <section id="skills">
-  <h2>Skills &amp; Goals</h2>
+  <h2>Strengths &amp; Aspirations</h2>
   <div class="grid">
-    <div class="glass"><h3>Strengths</h3>
-      <ol><li>Writing</li><li>Programming</li></ol></div>
-    <div class="glass"><h3>Interests</h3>
-      <ol><li>Programming</li><li>Web developing</li></ol></div>
-    <div class="glass"><h3>Dream Project</h3>
-      <ul><li>Building chat bots</li><li>Becoming a software engineer</li></ul></div>
+    <div class="glass"><h3>My Strengths</h3>
+      <ol><li>Writing</li><li>Coding</li></ol></div>
+    <div class="glass"><h3>What I Enjoy</h3>
+      <ol><li>Coding</li><li>Creating websites</li></ol></div>
+    <div class="glass"><h3>My Dreams</h3>
+      <ul><li>Creating smart chat assistants</li><li>Becoming a software engineer</li></ul></div>
   </div>
 </section>
 
 <section>
-  <h2>Find Me</h2>
+  <h2>Where I Am</h2>
   <iframe id="map" title="Hanumakonda map" src="https://maps.google.com/maps?q=Hanumakonda&output=embed" loading="lazy"></iframe>
 </section>
 </main>
 
 <footer id="contact">
-  <h2>Contact</h2>
+  <h2>Get in Touch</h2>
   <div class="glass">
-    <p><a href="mailto:Chenigarapusirilraj@gmail.com" style="color:var(--deep)">Chenigarapusirilraj@gmail.com</a></p>
-    <p>Surendrapuri Colony, Hanumakonda</p>
+    <ul class="details">
+      <li><b>Name</b>Chenigarapu Siril Raj</li>
+      <li><b>Instagram</b><a href="https://www.instagram.com/Cheer_up_siril" target="_blank" rel="noopener">@Cheer_up_siril</a></li>
+      <li><b>Email</b><a href="mailto:Chenigarapusirilraj@gmail.com">Chenigarapusirilraj@gmail.com</a></li>
+      <li><b>Address</b>Surendrapuri Colony, Hanumakonda</li>
+      <li><b>College</b><a href="https://www.iiitr.ac.in" target="_blank" rel="noopener">IIIT Raichur</a> · B.Tech Computer Science, 1st Year</li>
+      <li><b>Dream Career</b>Software Engineer</li>
+    </ul>
     <a class="btn" href="mailto:Chenigarapusirilraj@gmail.com">Send Email</a>
+    <a class="btn" href="https://www.instagram.com/Cheer_up_siril" target="_blank" rel="noopener">Follow on Instagram</a>
   </div>
-  <p style="margin-top:24px">© 2026 Siril Raj · First-Year CSE, IIIT Raichur · Made with HTML &amp; CSS</p>
+  <p style="margin-top:24px">© 2026 Siril Raj · First-Year Computer Science, IIIT Raichur · Designed with care</p>
 </footer>
 
-<script>
-var msgs=["You've got this! 💜","Keep coding, keep growing! 🚀","Dedication beats talent! ✨","One bug at a time! 🐛","Smile, today is yours! 😊"],i=0;
-document.getElementById('cheerBtn').onclick=function(){document.getElementById('cheer').textContent=msgs[i++%msgs.length]};
-</script>
 </body>
 </html>
